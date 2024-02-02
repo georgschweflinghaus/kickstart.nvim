@@ -99,7 +99,10 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  {
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+  },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
