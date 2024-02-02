@@ -72,6 +72,11 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+    
+  -- File Tree
+  -- Requires as well MesloLGS fonts. 
+  'scrooloose/nerdtree',
+  'ryanoasis/vim-devicons',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
