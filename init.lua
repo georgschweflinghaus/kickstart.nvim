@@ -72,7 +72,7 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-    
+
   -- File Tree
   -- Requires as well MesloLGS fonts. 
   'scrooloose/nerdtree',
@@ -677,5 +677,23 @@ cmp.setup {
   },
 }
 
+
+
+-- NERDTree
+-- You can use a split view if you use
+-- s you open the files side by side
+-- i you open the files one above the other
+-- Toggle NERDTree in Normal Mode
+vim.api.nvim_set_keymap('n', '<leader>ee', ':NERDTreeToggle<CR>', {noremap = true, silent = true})
+-- Toggle NERDTree in Insert Mode
+vim.api.nvim_set_keymap('i', '<C-e>', '<Esc>:NERDTreeToggle<CR>', {noremap = true, silent = true})
+-- Find the current buffer in NERDTree
+vim.api.nvim_set_keymap('n', '<leader>ef', ':NERDTreeFind<CR>', {noremap = true, silent = true})
+
+-- Set a good folding mechanism
+-- za zo zR zM
+vim.opt.foldmethod = 'indent'
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
