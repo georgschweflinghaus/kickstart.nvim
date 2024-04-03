@@ -101,6 +101,7 @@ require('lazy').setup({
           String = { fg = colors.peach },
           Function = {fg = colors.yellow },
           Identifier = {fg = colors.sky },
+          Keyword = { fg = colors.blue },
         }
       end
     }
