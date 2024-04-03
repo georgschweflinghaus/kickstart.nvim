@@ -65,6 +65,12 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- Comment with <Leader> cc 
+  'preservim/nerdcommenter',
+
+  -- Dark+ Theme like VS code
+  'tomasiser/vim-code-dark',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -83,31 +89,31 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-  { -- You can easily change to a different colorscheme.
+  --{ -- You can easily change to a different colorscheme.
   -- Change the name of the colorscheme plugin below, and then
   -- change the command in the config to whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
   --  'folke/tokyonight.nvim',
-  "catppuccin/nvim",
-  lazy = false,
-  name = "catppuccin",
-  -- you can do it like this with a config function
-  config = function()
-    require("catppuccin").setup {
-      custom_highlights = function(colors)
-        return {
-          Comment = { fg = colors.green },
-          String = { fg = colors.peach },
-          Function = {fg = colors.yellow },
-          Identifier = {fg = colors.sky },
-          Keyword = { fg = colors.blue },
-        }
-      end
-    }
-  end,
+--[[  "catppuccin/nvim",]]
+  --[[lazy = false,]]
+  --[[name = "catppuccin",]]
+  --[[-- you can do it like this with a config function]]
+  --[[config = function()]]
+    --[[require("catppuccin").setup {]]
+      --[[custom_highlights = function(colors)]]
+        --[[return {]]
+          --[[Comment = { fg = colors.green },]]
+          --[[String = { fg = colors.peach },]]
+          --[[Function = {fg = colors.yellow },]]
+          --[[Identifier = {fg = colors.sky },]]
+          --[[Keyword = { fg = colors.blue },]]
+        --[[}]]
+      --[[end]]
+    --[[}]]
+  --[[end,]]
 
-  },
+  --[[},]]
  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   -- TMUX configuration is done below
   {
@@ -589,8 +595,8 @@ cmp.setup {
   },
 }
 
-vim.cmd.colorscheme('catppuccin')
-
+--vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('codedark')
 -- Once all plugins are defined we can add new keybinings
 require("config.keybindings")
 -- The line beneath this is called `modeline`. See `:help modeline`
