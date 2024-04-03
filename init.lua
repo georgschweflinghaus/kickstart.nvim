@@ -95,33 +95,16 @@ require('lazy').setup({
   -- you can do it like this with a config function
   config = function()
     require("catppuccin").setup {
-      -- configurations  -- or just use opts table  -- or just use opts table
-      -- configurations
-      styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-      comments = { "bold" }, -- Change the style of comments
-      conditionals = { "italic" },
-      loops = {},
-      functions = {},
-      keywords = {},
-      strings = {},
-      variables = {},
-      numbers = {},
-      booleans = {},
-      properties = {},
-      types = {},
-      operators = {},
-      -- miscs = {}, -- Uncomment to turn off hard-coded styles
-    },
-    color_overrides = {
-      all = {
-        text = "#ffffff",
-        comments = "#ffffff",
-
-      }
+      custom_highlights = function(colors)
+        return {
+          Comment = { fg = colors.green },
+          String = { fg = colors.peach },
+          Function = {fg = colors.yellow },
+          Identifier = {fg = colors.sky },
+        }
+      end
     }
-
-  }
-end,
+  end,
 
   },
  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
