@@ -95,6 +95,13 @@ require('lazy').setup({
   -- you can do it like this with a config function
   config = function()
     require("catppuccin").setup {
+      color_overrides = {
+        all = {
+            green = "#608B4E",
+            blue = "#569CD6"
+        }
+    },
+
       custom_highlights = function(colors)
         return {
           Comment = { fg = colors.green },
