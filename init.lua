@@ -83,6 +83,49 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+  { -- You can easily change to a different colorscheme.
+  -- Change the name of the colorscheme plugin below, and then
+  -- change the command in the config to whatever the name of that colorscheme is.
+  --
+  -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --  'folke/tokyonight.nvim',
+  "catppuccin/nvim",
+  lazy = false,
+  name = "catppuccin",
+  -- you can do it like this with a config function
+  config = function()
+    require("catppuccin").setup {
+      -- configurations  -- or just use opts table  -- or just use opts table
+      -- configurations
+      styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+      comments = { "bold" }, -- Change the style of comments
+      conditionals = { "italic" },
+      loops = {},
+      functions = {},
+      keywords = {},
+      strings = {},
+      variables = {},
+      numbers = {},
+      booleans = {},
+      properties = {},
+      types = {},
+      operators = {},
+      -- miscs = {}, -- Uncomment to turn off hard-coded styles
+    },
+    color_overrides = {
+      all = {
+        text = "#ffffff",
+        comments = "#ffffff",
+
+      }
+    }
+
+  }
+end,
+
+  },
+ -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- TMUX configuration is done below
   {
     "aserowy/tmux.nvim",
     config = function() return require("tmux").setup() end
@@ -180,28 +223,14 @@ require('lazy').setup({
       end,
     },
   },
-
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require('onedark').setup {
-        -- Set a style preset. 'dark' is default.
-        style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
-      }
-      require('onedark').load()
-    end,
-  },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
+    dependencies = {'nvim-tree/nvim-web-devicons'},
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'auto',
         component_separators = '|',
         section_separators = '',
@@ -264,7 +293,7 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-}, {})
+}, {}) -- the END of lazy setup
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -484,9 +513,9 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -575,6 +604,8 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+vim.cmd.colorscheme('catppuccin')
 
 -- Once all plugins are defined we can add new keybinings
 require("config.keybindings")
