@@ -65,8 +65,11 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-    -- Comment with <Leader> cc 
+  -- Comment with <Leader> cc 
   'preservim/nerdcommenter',
+
+  -- Add git blame to the status line
+  'f-person/git-blame.nvim',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -101,7 +104,9 @@ require('lazy').setup({
       color_overrides = {
         all = {
             green = "#608B4E",
-            blue = "#569CD6"
+            blue = "#569CD6",
+            sky = "#9CDCFE",
+
         }
     },
 
@@ -600,6 +605,20 @@ cmp.setup {
 }
 
 vim.cmd.colorscheme('catppuccin')
+
+--https://www.reddit.com/r/neovim/comments/11kumh3/what_else_to_put_in_lualine/
+--[[local git_blame = require('gitblame')]]
+--[[-- This disables showing of the blame text next to the cursor]]
+--[[vim.g.gitblame_display_virtual_text = 0]]
+--[[require('lualine').setup {]]
+    --[[options = {},]]
+    --[[-- Show git blame info in the status line]]
+    --[[sections = {]]
+        --[[lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } }]]
+    --[[}]]
+--[[}]]
+
+
 
 -- Once all plugins are defined we can add new keybinings
 require("config.keybindings")
