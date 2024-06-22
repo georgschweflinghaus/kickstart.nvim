@@ -57,11 +57,6 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  -- File Tree
-  -- Requires as well MesloLGS fonts. 
-  'scrooloose/nerdtree',
-  'ryanoasis/vim-devicons',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -73,6 +68,50 @@ require('lazy').setup({
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
+  
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {
+        view = {
+          width = 20,
+          adaptive_size = true,
+        },
+        renderer = {
+          group_empty = true,
+          icons = {
+            show = {
+              git = true,
+              file = false,
+              folder = false,
+              folder_arrow = true,
+            },
+            glyphs = {
+              bookmark = "🔖",
+              folder = {
+                arrow_closed = "⏵",
+                arrow_open = "⏷",
+              },
+              git = {
+                unstaged = "✗",
+                staged = "✓",
+                unmerged = "⌥",
+                renamed = "➜",
+                untracked = "★",
+                deleted = "⊖",
+                ignored = "◌",
+              },
+            },
+          },
+        }
+      }
+    end,
+  },
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',

@@ -50,11 +50,11 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- s you open the files side by side
 -- i you open the files one above the other
 -- Toggle NERDTree in Normal Mode
-vim.api.nvim_set_keymap('n', '<leader>tt', ':NERDTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>tt', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 -- Toggle NERDTree in Insert Mode
-vim.api.nvim_set_keymap('i', '<C-t>', '<Esc>:NERDTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-t>', '<Esc>:NvimTreeToggle<CR>', {noremap = true, silent = true})
 -- Find the current buffer in NERDTree
-vim.api.nvim_set_keymap('n', '<leader>tf', ':NERDTreeFind<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>tf', ':NvimTreeFindFileToggle<CR>', {noremap = true, silent = true})
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
