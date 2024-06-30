@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 
--- [[ Telescipe ]]
+-- [[ Telescope ]]
 -- See `:help telescope.builtin`
 
 local function telescope_live_grep_open_files()
@@ -55,6 +55,12 @@ vim.api.nvim_set_keymap('n', '<leader>tt', ':NERDTreeToggle<CR>', {noremap = tru
 vim.api.nvim_set_keymap('i', '<C-t>', '<Esc>:NERDTreeToggle<CR>', {noremap = true, silent = true})
 -- Find the current buffer in NERDTree
 vim.api.nvim_set_keymap('n', '<leader>tf', ':NERDTreeFind<CR>', {noremap = true, silent = true})
+
+-- buffers
+vim.keymap.set('n', '<leader><leader>l', ':tabnext<CR>', {desc = 'n next tab'})
+vim.keymap.set('n', '<leader><leader>h', ':tabprevious<CR>', {desc = 'n previous tab'})
+
+
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
