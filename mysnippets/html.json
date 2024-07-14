@@ -1,25 +1,5 @@
 {
-  "html5": {
-    "prefix": "html5",
-    "body": [
-      "<!DOCTYPE html>",
-      "<html lang=\"$1en\">",
-      "\t<head>",
-      "\t\t<meta charset=\"UTF-8\">",
-      "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
-      "\t\t<title>$2</title>",
-      "\t\t<link href=\"$3css/style.css\" rel=\"stylesheet\">",
-      "\t</head>",
-      "\t<body>",
-      "\t$0",
-      "TESTIT",
-      "\t</body>",
-      "</html>"
-    ],
-    "description": "HTML - Defines a template for a html5 document",
-    "scope": "text.html"
-  },
-    "html5b": {
+  "html5b": {
     "prefix": "html5b",
     "body": [
       "<!doctype html>",
@@ -38,8 +18,73 @@
       "  </body>",
       "</html>"
     ],
-      "description": "HTML - Bootstrap template for an html document",
-      "scope": "text.html"
+    "description": "HTML - Bootstrap template for an html document",
+    "scope": "text.html"
+  },
+  "formb": {
+    "prefix": "formb",
+    "body": [ 
+      "<form>",
+      "  <div class=\"mb-3\">",
+      "    <label for=\"exampleInputEmail1\" class=\"form-label\">Email address</label>",
+      "    <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\">",
+      "    <div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>",
+      "  </div>",
+      "  <div class=\"mb-3\">",
+      "    <label for=\"exampleInputPassword1\" class=\"form-label\">Password</label>",
+      "    <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\">",
+      "  </div>",
+      "  <div class=\"mb-3 form-check\">",
+      "    <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">",
+      "    <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>",
+      "  </div>",
+      "  <button type=\"submit\" class=\"btn btn-primary\">Submit</button>",
+      "</form>"
+    ],
+    "description": "HTML - Bootstrap template for a form",
+    "scope": "text.html"
+  },
+  "3col": {
+    "prefix": "3col",
+    "body": [
+      "<div class=\"container text-center\">",
+      "  <div class=\"row align-items-start\">",
+      "    <div class=\"col\">",
+      "      $1",
+      "    </div>",
+      "    <div class=\"col\">",
+      "      One of three columns",
+      "    </div>",
+      "    <div class=\"col\">",
+      "      One of three columns",
+      "    </div>",
+      "  </div>",
+      "</div>"
+    ],
+    "description": "HTML  Bootstrap template for 3 columns layout",
+    "scope": "text.html"
+  },
+  "iconbtn": {
+    "prefix": "iconbtn",
+    "body": [
+      "<button type=\"button\"",
+      "class=\"btn btn-sm btn-outline-success\">",
+      "<i class=\"bi bi-file-earmark-code\"></i>",
+      "</button>"
+    ],
+    "description": "HTML  Bootstrap icon button",
+    "scope": "text.html"
+  },
+  "container": {
+    "prefix": "container",
+    "body": [
+      "<div class=\"container\">",
+      "$1",
+      "</div>"
+    ],
+    "description": "HTML  Bootstrap icon button",
+    "scope": "text.html"
   }
+
 
 }
