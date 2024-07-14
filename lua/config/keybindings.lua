@@ -53,6 +53,12 @@ vim.api.nvim_set_keymap('i', '<C-t>', '<Esc>:NvimTreeToggle<CR>', {noremap = tru
 -- Find the current buffer in NERDTree
 vim.api.nvim_set_keymap('n', '<leader>tf', ':NvimTreeFindFileToggle<CR>', {noremap = true, silent = true})
 
+-- buffers
+vim.keymap.set('n', '<leader><leader>l', ':tabnext<CR>', {desc = 'n next tab'})
+vim.keymap.set('n', '<leader><leader>h', ':tabprevious<CR>', {desc = 'n previous tab'})
+
+
+
 -- Move lines
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
