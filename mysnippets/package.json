@@ -1,0 +1,14 @@
+{
+  "name": "mysnippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "html",
+          "markdown"
+        ],
+        "path": "html.json"
+      }    
+    ]
+  }
+}

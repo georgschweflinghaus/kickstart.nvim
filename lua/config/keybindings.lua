@@ -41,15 +41,13 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 
--- [[ Telescipe ]]
+-- [[ Telescope ]]
 -- See `:help telescope.builtin`
+-- If live_grep is not working check if Telescope is healthy by typing in:  healthcheck telescope
+-- You may have to install the program ripgrep as live_grep relies on it!!
+vim.keymap.set('n', '<leader>fg', ':Telescope grep_string<cr>')
 
-local function telescope_live_grep_open_files()
-  require('telescope.builtin').live_grep {
-    grep_open_files = true,
-    prompt_title = 'Live Grep in Open Files',
-  }
-end
+vim.keymap.set('n', '<leader>flg', ':Telescope live_grep<cr>')
 
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '<space> Search Files' })
 vim.keymap.set('n', '<leader>fo', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -61,10 +59,9 @@ vim.keymap.set('n', '<leader>/', function()
     previewer = false,
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
-vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
@@ -76,11 +73,17 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- s you open the files side by side
 -- i you open the files one above the other
 -- Toggle NERDTree in Normal Mode
-vim.api.nvim_set_keymap('n', '<leader>tt', ':NERDTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>tt', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 -- Toggle NERDTree in Insert Mode
-vim.api.nvim_set_keymap('i', '<C-t>', '<Esc>:NERDTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-t>', '<Esc>:NvimTreeToggle<CR>', {noremap = true, silent = true})
 -- Find the current buffer in NERDTree
-vim.api.nvim_set_keymap('n', '<leader>tf', ':NERDTreeFind<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>tf', ':NvimTreeFindFileToggle<CR>', {noremap = true, silent = true})
+
+-- buffers
+vim.keymap.set('n', '<leader><leader>l', ':tabnext<CR>', {desc = 'n next tab'})
+vim.keymap.set('n', '<leader><leader>h', ':tabprevious<CR>', {desc = 'n previous tab'})
+
+
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")

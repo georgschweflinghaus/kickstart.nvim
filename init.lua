@@ -57,11 +57,6 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  -- File Tree
-  -- Requires as well MesloLGS fonts. 
-  'scrooloose/nerdtree',
-  'ryanoasis/vim-devicons',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -71,8 +66,55 @@ require('lazy').setup({
   -- Add git blame to the status line
   'f-person/git-blame.nvim',
 
+  -- Show RGB colors for color codes found in code like css or javascript
+  'norcalli/nvim-colorizer.lua',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
+  
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {
+        view = {
+          width = 20,
+          adaptive_size = true,
+        },
+        renderer = {
+          group_empty = true,
+          icons = {
+            show = {
+              git = true,
+              file = false,
+              folder = false,
+              folder_arrow = true,
+            },
+            glyphs = {
+              bookmark = "🔖",
+              folder = {
+                arrow_closed = "⏵",
+                arrow_open = "⏷",
+              },
+              git = {
+                unstaged = "✗",
+                staged = "✓",
+                unmerged = "⌥",
+                renamed = "➜",
+                untracked = "★",
+                deleted = "⊖",
+                ignored = "◌",
+              },
+            },
+          },
+        }
+      }
+    end,
+  },
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -233,10 +275,9 @@ require('lazy').setup({
         theme = 'auto',
         component_separators = '|',
         section_separators = '',
-      },
-    },
+      },    
+      }
   },
-
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -556,9 +597,9 @@ mason_lspconfig.setup_handlers {
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.dependencies = { "rafamadriz/friendly-snippets" }
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.local/share/nvim/lazy/friendly-snippets/","~/.config/nvim/mysnippets/" } })
 luasnip.config.setup {}
-
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -604,23 +645,23 @@ cmp.setup {
   },
 }
 
+require'colorizer'.setup()
+
+-- Show gitblame info in the status bar rather then in each line. 
+vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+local git_blame = require('gitblame')
+
+require('lualine').setup({
+    sections = {
+            lualine_c = {
+                { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+            }
+    }
+})
+
 vim.cmd.colorscheme('catppuccin')
-
---https://www.reddit.com/r/neovim/comments/11kumh3/what_else_to_put_in_lualine/
---[[local git_blame = require('gitblame')]]
---[[-- This disables showing of the blame text next to the cursor]]
---[[vim.g.gitblame_display_virtual_text = 0]]
---[[require('lualine').setup {]]
-    --[[options = {},]]
-    --[[-- Show git blame info in the status line]]
-    --[[sections = {]]
-        --[[lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } }]]
-    --[[}]]
---[[}]]
-
-
-
 -- Once all plugins are defined we can add new keybinings
+
 require("config.keybindings")
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
