@@ -187,7 +187,19 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-
+  -- {
+  --   'psf/black',
+  --   ft = 'python',
+  --   config = function()
+  --     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  --       pattern = "*.py",
+  --       callback = function()
+  --         vim.comd("Black")
+  --       end,
+  --     })
+  --   end
+  -- },
+  --
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
   {
@@ -275,9 +287,14 @@ require('lazy').setup({
         theme = 'auto',
         component_separators = '|',
         section_separators = '',
-      },    
+      },
+      sections = { lualine_c = {{ 'filename', path = 2}} }
       }
   },
+-- require('lualine').setup({
+--   sections = { lualine_c = {{ 'filename', path = 2}} }
+-- })
+--
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -542,6 +559,8 @@ require('which-key').register({
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+  -- Install these LSPs automatically
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -553,9 +572,11 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
+  marksman = {},
   pyright = {},
-  -- rust_analyzer = {},
+ -- rust_analyzer = {},
   tsserver = {},
+  cssls = {},
   html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -598,7 +619,12 @@ mason_lspconfig.setup_handlers {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 luasnip.dependencies = { "rafamadriz/friendly-snippets" }
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.local/share/nvim/lazy/friendly-snippets/","~/.config/nvim/mysnippets/" } })
+-- Below you may add your own snippet directory
+require("luasnip.loaders.from_vscode").lazy_load({
+  paths = {
+    "~/.local/share/nvim/lazy/friendly-snippets/",
+    "~/.config/nvim/mysnippets/" }
+  })
 luasnip.config.setup {}
 cmp.setup {
   snippet = {
@@ -648,17 +674,17 @@ cmp.setup {
 require'colorizer'.setup()
 
 -- Show gitblame info in the status bar rather then in each line. 
-vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-local git_blame = require('gitblame')
-
-require('lualine').setup({
-    sections = {
-            lualine_c = {
-                { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
-            }
-    }
-})
-
+-- vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+-- local git_blame = require('gitblame')
+--
+-- require('lualine').setup({
+--     sections = {
+--             lualine_c = {
+--                 { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+--             }
+--     }
+-- })
+--
 vim.cmd.colorscheme('catppuccin')
 -- Once all plugins are defined we can add new keybinings
 
