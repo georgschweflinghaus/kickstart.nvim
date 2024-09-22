@@ -145,6 +145,7 @@ require('lazy').setup({
     require("catppuccin").setup {
       color_overrides = {
         all = {
+          -- Pallet colors for Dark+ https://github.com/tomasiser/vim-code-dark?tab=readme-ov-file#color-palette
             green = "#608B4E",
             blue = "#569CD6",
             sky = "#9CDCFE",
