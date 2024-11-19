@@ -3,11 +3,12 @@
   "contributes": {
     "snippets": [
       {
-        "language": [
-          "html",
-          "markdown"
-        ],
-        "path": "html.json"
+        "language": [ "html"],
+        "path": "./html.json"
+      },
+      {
+        "language": [ "markdown"],
+        "path": "./markdown.json"
       }    
     ]
   }
