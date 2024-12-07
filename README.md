@@ -28,6 +28,10 @@ Distribution Alternatives:
 > **NOTE** 
 > [Backup](#FAQ) your previous configuration (if any exists)
 
+Install these tools:
+sudo apt-get install ripgrep
+sudo apt-get install fd
+
 Requirements:
 * Make sure to review the readmes of the plugins if you are experiencing errors. In particular:
   * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) is required for multiple [telescope](https://github.com/nvim-telescope/telescope.nvim#suggested-dependencies) pickers.
