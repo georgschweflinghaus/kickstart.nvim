@@ -82,7 +82,7 @@
       "$1",
       "</div>"
     ],
-    "description": "HTML  Bootstrap icon button",
+    "description": "HTML  div.container",
     "scope": "text.html"
   }
 

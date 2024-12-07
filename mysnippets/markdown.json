@@ -1,0 +1,11 @@
+{
+  "Seperator": {
+    "prefix": "----",
+    "body": [
+      "------------------------",
+      "# ${CURRENT_DATE}.${CURRENT_MONTH}.${CURRENT_YEAR} "
+    ],
+    "description": "Markdown notes separator"
+  }
+
+}
