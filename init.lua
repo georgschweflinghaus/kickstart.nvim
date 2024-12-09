@@ -332,20 +332,20 @@ require('lazy').setup({
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = true,
-      sections = {
-        {
-          section = "terminal",
-          cmd = "chafa ~/.config/nvim/snacks/legomaenchen.png -c 240 --scale 0.6 --format symbols ",
-          height = 17,
+        sections = {
+          {
+            section = "terminal",
+            cmd = "chafa ~/.config/nvim/snacks/legomaenchen.png -c 240 --scale 0.6 --format symbols ",
+            height = 17,
+          },
+          {
+            pane = 2,
+            { section = "keys", gap = 1, padding = 2 },
+            { section = "recent_files", title = "Recent Files", cwd = false, limit = 8, padding = 1 },
+            { section = "projects", icon = " ", title = "Projects", indent = 2, padding = 2 },
+            { section = "startup" },
+          },
         },
-        {
-          pane = 2,
-          { section = "keys", gap = 1, padding = 2 },
-          { section = "recent_files", title = "Recent Files", cwd = false, limit = 8, padding = 1 },
-          { section = "projects", icon = " ", title = "Projects", indent = 2, padding = 2 },
-          { section = "startup" },
-        },
-      },
       },
     
       notifier = {
