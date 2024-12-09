@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- You may have to install the program ripgrep as live_grep relies on it!!
 vim.keymap.set('n', '<leader>fg', ':Telescope grep_string<cr>')
 
-vim.keymap.set('n', '<leader>flg', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>ffc', ':Telescope live_grep<cr>', {desc = '[f]ind [f]iles [c]ontaining'})
 
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '<space> Search Files' })
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[F]ind [r]ecently opened files' })
