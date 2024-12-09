@@ -427,6 +427,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    -- Either truncate == fill the screen OR smart == show only file name 
+    -- (latter looks a bit cleaner but misses out on information)
+    path_display={"truncate"},
     mappings = {
       i = {
         ['<C-u>'] = false,
