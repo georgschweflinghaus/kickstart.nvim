@@ -68,7 +68,10 @@ require('lazy').setup({
 
   -- Show RGB colors for color codes found in code like css or javascript
   'norcalli/nvim-colorizer.lua',
-
+ 
+  -- Surrounding plug-in
+  'echasnovski/mini.surround',
+  -- 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -170,6 +173,18 @@ require('lazy').setup({
   {
     "aserowy/tmux.nvim",
     config = function() return require("tmux").setup() end
+  },
+  -- Flash configuration to extend the search
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {
+      modes = {
+        search = {
+          enabled = true
+        }
+      }
+    }
   },
   {
     -- Autocompletion
@@ -347,7 +362,6 @@ require('lazy').setup({
           },
         },
       },
-    
       notifier = {
         enabled = true,
         timeout = 3000,
@@ -736,8 +750,9 @@ cmp.setup {
   },
 }
 
-require'colorizer'.setup()
+require('colorizer').setup()
 
+require('mini.surround').setup()
 -- Show gitblame info in the status bar rather then in each line. 
 -- vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
 -- local git_blame = require('gitblame')
