@@ -54,6 +54,7 @@ vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[F]ind [r]ecently opened files' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[b][ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>fk', require('telescope.builtin').keymaps, { desc = '[f]ind [k]eymaps' })
+vim.keymap.set('n', '<leader>fc', require('telescope.builtin').colorscheme, { desc = '[f]ind [c]olorschemes' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -97,3 +98,7 @@ vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 -- Move lines in visual mode with J and K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Flash extension for find operations with labels
+-- vim.keymap.set('n', 's', require('flash').jump(), { desc = 'Flash search extension'} )
+
